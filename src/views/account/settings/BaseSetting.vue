@@ -46,13 +46,13 @@
       AvatarModal
     },
     created() {
-      getCurrentUser().then(e => {
-        const {data} = e;
-        this.nickName = data.nick_name;
-        this.mobile = data.mobile;
-        this.email = data.email;
-        this.id = data.id;
-      });
+      // getCurrentUser().then(e => {
+      //   const {data} = e;
+      //   this.nickName = data.nick_name;
+      //   this.mobile = data.mobile;
+      //   this.email = data.email;
+      //   this.id = data.id;
+      // });
     },
     data() {
       return {

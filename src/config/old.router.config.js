@@ -332,7 +332,7 @@ export const constantRouterMap = [
   {
     path: '/user',
     component: UserLayout,
-    redirect: '/user/login',
+    redirect: '/user/user',
     hidden: true,
     children: [
       {

@@ -1,15 +1,15 @@
 <template>
-  <div id="userLayout" :class="['user-layout-wrapper', device]" v-if="is_login">
+  <div id="userLayout" :class="['user-layout-wrapper', device]">
     <div class="container">
       <div class="top">
         <div class="header">
           <a href="/">
-            <img src="../../public/english-input.png" class="logo" alt="logo">
-            <span class="title" style="color:#13C2C2">English Assistant</span>
+            <img src="../../public/elm.png" class="logo" alt="logo">
+            <span class="title" style="color:#13C2C2">饿了么 后台管理页面</span>
           </a>
         </div>
         <div class="desc">
-          English Assistant 致力于帮助广大大学生高效学习英语
+          饿了么 为了广大吃货而服务
         </div>
       </div>
 
@@ -17,7 +17,7 @@
 
       <div class="footer">
         <div class="copyright">
-          Copyright &copy; 2020 软工172-2组
+          Copyright &copy; 2020 软工17
         </div>
       </div>
     </div>
@@ -42,24 +42,6 @@
     data() {
       return {
         production: config.production,
-        is_login: false
-      }
-    },
-    created() {
-      // 判断是否登录
-      const user = Vue.ls.get(CURRENT_USER);
-      // 已经登录
-      if (!!user) {
-        this.$router.push({path: '/'})
-        // 延迟 1 秒显示信息
-        setTimeout(() => {
-          this.$notification.warning({
-            message: '提示',
-            description: `已经登录，请勿重复登录`
-          })
-        }, 1000);
-      } else {
-        this.is_login = true;
       }
     },
     mounted() {

@@ -2,7 +2,7 @@
   <div class="logo">
     <router-link :to="{name:'dashboard'}">
 <!--      <LogoSvg alt="logo" />-->
-      <img src="../../../public/english-input.png" height="32" width="32" alt="logo"/>
+      <img src="../../../public/elm.png" height="32" width="32" alt="logo"/>
       <h1 v-if="showTitle">{{ title }}</h1>
     </router-link>
   </div>
@@ -19,7 +19,7 @@ export default {
   props: {
     title: {
       type: String,
-      default: 'English Assistant',
+      default: '饿了么',
       required: false
     },
     showTitle: {

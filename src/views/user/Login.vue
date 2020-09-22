@@ -52,45 +52,9 @@
             </a-input>
           </a-form-item>
         </a-tab-pane>
-        <a-tab-pane key="tab2" tab="手机号登录">
-          <a-form-item>
-            <a-input
-              size="large"
-              type="text"
-              placeholder="手机号"
-              v-decorator="['mobile', {rules: [{ required: true, pattern: /^1[34578]\d{9}$/, message: '请输入正确的手机号' }], validateTrigger: 'change'}]">
-              <a-icon slot="prefix" type="mobile" :style="{ color: 'rgba(0,0,0,.25)' }"/>
-            </a-input>
-          </a-form-item>
-
-          <a-row :gutter="16">
-            <a-col class="gutter-row" :span="16">
-              <a-form-item>
-                <a-input
-                  size="large"
-                  type="text"
-                  placeholder="验证码"
-                  v-decorator="['code', {rules: [{ required: true, message: '请输入验证码' }], validateTrigger: 'blur'}]">
-                  <a-icon slot="prefix" type="mail" :style="{ color: 'rgba(0,0,0,.25)' }"/>
-                </a-input>
-              </a-form-item>
-            </a-col>
-            <a-col class="gutter-row" :span="8">
-              <a-button
-                class="getCaptcha"
-                tabindex="-1"
-                :disabled="state.smsSendBtn"
-                @click.stop.prevent="getCaptcha"
-                v-text="!state.smsSendBtn && '获取验证码' || (state.time+' s')"
-              ></a-button>
-            </a-col>
-          </a-row>
-        </a-tab-pane>
       </a-tabs>
 
-      <div class="user-login-other">
-        <router-link class="register" :to="{ name: 'register' }">注册账户</router-link>
-      </div>
+
 
       <a-form-item style="margin-top:48px">
         <a-button
@@ -123,7 +87,7 @@
       return {
         customActiveKey: 'tab1',
         loginBtn: false,
-        // login type: 0 email, 1 username, 2 telephone
+        // user type: 0 email, 1 username, 2 telephone
         loginType: 0,
         isLoginError: false,
         requiredTwoStepCaptcha: false,
@@ -132,7 +96,7 @@
         state: {
           time: 60,
           loginBtn: false,
-          // login type: 0 email, 1 username, 2 telephone
+          // user type: 0 email, 1 username, 2 telephone
           loginType: 0,
           smsSendBtn: false
         }
