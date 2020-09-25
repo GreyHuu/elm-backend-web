@@ -8,7 +8,7 @@
             size="large"
             :style="{ backgroundColor: '#13C2C2', verticalAlign: 'middle' }"
           >
-              {{ avatarValue }}
+              饿了么
         </a-avatar>
         </span>
         <a-menu slot="overlay" class="user-dropdown-menu-wrapper">
@@ -68,18 +68,9 @@ export default {
         title: '提示',
         content: '真的要注销登录吗 ?',
         onOk: () => {
-          return this.Logout({}).then(() => {
-            setTimeout(() => {
-              this.$router.push({ path: '/user' })
-            }, 16)
-          }).catch(err => {
-            this.$message.error({
-              title: '错误',
-              description: err.message
-            })
-          })
-        },
-        onCancel() {
+          setTimeout(() => {
+            this.$router.push({ path: '/' })
+          }, 200)
         }
       })
     }

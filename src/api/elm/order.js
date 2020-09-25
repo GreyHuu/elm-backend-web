@@ -1,61 +1,47 @@
-import {user} from './index'
+import { business, order } from './index'
 import { axios } from '@/utils/request'
 
 /**
- * @param parameter
- * @returns {*}
+ * 分页获取订单
+ * @param param
+ * {
+ *   count
+ * }
+ * @returns {AxiosPromise}
  */
-export function user (parameter) {
+export function getAllOrder(param) {
   return axios({
-    url: '/auth/login',
-    method: 'post',
-    data: parameter
-  })
-}
-
-export function getSmsCaptcha (parameter) {
-  return axios({
-    url: api.SendSms,
-    method: 'post',
-    data: parameter
-  })
-}
-
-export function getInfo () {
-  return axios({
-    url: '/user/info',
-    method: 'get',
-    headers: {
-      'Content-Type': 'application/json;charset=UTF-8'
-    }
-  })
-}
-
-export function getCurrentUserNav (token) {
-  return axios({
-    url: '/user/nav',
+    url: order.GetAllOrder + param.count,
     method: 'get'
   })
 }
 
-export function logout () {
+/**
+ * 删除订单
+ * @param param
+ * {
+ *   id:1111
+ * }
+ * @returns {AxiosPromise}
+ */
+export function delOrder(param) {
   return axios({
-    url: '/auth/logout',
-    method: 'post',
-    headers: {
-      'Content-Type': 'application/json;charset=UTF-8'
-    }
+    url: order.DelOrder + param.id,
+    method: 'delete'
   })
 }
 
 /**
- * get user 2step code open?
- * @param parameter {*}
+ * 模糊查找订单
+ * @param param
+ * {
+ *   name
+ * }
+ * @returns {*}
  */
-export function get2step (parameter) {
+export function searchOrder(param) {
   return axios({
-    url: api.twoStepCode,
-    method: 'post',
-    data: parameter
+    url: order.SearchOrder+param.name,
+    method: 'get',
   })
 }

@@ -1,61 +1,87 @@
-import {user} from './index'
+import { user } from './index'
 import { axios } from '@/utils/request'
 
 /**
- * @param parameter
+ * 登录
+ * @param param
+ * {
+ *   account:
+ *   password
+ * }
  * @returns {*}
  */
-export function user (parameter) {
+export function login(param) {
   return axios({
-    url: '/auth/login',
-    method: 'post',
-    data: parameter
+    url: user.Login + '?account=' + param.account + '&password=' + param.password,
+    method: 'post'
   })
 }
 
-export function getSmsCaptcha (parameter) {
+/**
+ * 获得全部的用户
+ * @returns {AxiosPromise}
+ */
+export function getAllUser() {
   return axios({
-    url: api.SendSms,
-    method: 'post',
-    data: parameter
-  })
-}
-
-export function getInfo () {
-  return axios({
-    url: '/user/info',
-    method: 'get',
-    headers: {
-      'Content-Type': 'application/json;charset=UTF-8'
-    }
-  })
-}
-
-export function getCurrentUserNav (token) {
-  return axios({
-    url: '/user/nav',
+    url: user.GetAllUser,
     method: 'get'
   })
 }
 
-export function logout () {
+/**'
+ * 删除用户
+ * @param param
+ * {
+ *   id
+ * }
+ * @returns {AxiosPromise}
+ */
+export function deleteUser(param) {
   return axios({
-    url: '/auth/logout',
-    method: 'post',
-    headers: {
-      'Content-Type': 'application/json;charset=UTF-8'
-    }
+    url: user.DelUser + param.id,
+    method: 'delete'
   })
 }
 
 /**
- * get user 2step code open?
- * @param parameter {*}
+ * 获得用户的信息
+ * @param param
+ * {
+ *   id
+ * }
+ * @returns {AxiosPromise}
  */
-export function get2step (parameter) {
+export function getUserInfo(param) {
   return axios({
-    url: api.twoStepCode,
-    method: 'post',
-    data: parameter
+    url: user.GetUserInfo + param,
+    method: 'post'
+  })
+}
+
+/**
+ * 更改用户信息
+ * @param param
+ * @returns {AxiosPromise}
+ */
+export function changeUser(param) {
+  return axios({
+    url: user.DelUser,
+    method: 'get',
+    data: param
+  })
+}
+
+/**
+ * 根据名字搜索用户
+ * @param param
+ * {
+ *   name
+ * }
+ * @returns {AxiosPromise}
+ */
+export function searchUserByName(param) {
+  return axios({
+    url: user.SearchUserByName+"?name="+param.name,
+    method: 'get',
   })
 }

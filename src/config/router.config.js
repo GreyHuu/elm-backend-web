@@ -46,28 +46,28 @@ export const asyncRouterMap = [
           component: () => import('@/views/elm/business/Business'),
           meta: {
             title: '商家列表',
-            icon: 'money-collect'
+            icon: 'ordered-list'
           }
         }, {
           path: '/business_control/type_list',
           name: 'business_type_list',
-          component: () => import('@/views/elm/business/Business'),
+          component: () => import('@/views/elm/business/BusinessType'),
           meta: {
             title: '商家分类',
-            icon: 'money-collect'
+            icon: 'border-right'
           }
         }]
       },
-      // 账目管理
-      {
-        path: '/account_control',
-        name: 'account',
-        component: () => import('@/views/elm/business/Business'),
-        meta: {
-          title: '账目管理',
-          icon: 'money-collect'
-        }
-      },
+      // // 账目管理
+      // {
+      //   path: '/account_control',
+      //   name: 'account',
+      //   component: () => import('@/views/elm/business/Business'),
+      //   meta: {
+      //     title: '账目管理',
+      //     icon: 'money-collect'
+      //   }
+      // },
       // 结果页
       {
         path: '/result',
@@ -134,18 +134,18 @@ export const asyncRouterMap = [
  */
 export const constantRouterMap = [
   {
-    path: '/user',
+    path: '/',
     component: UserLayout,
-    redirect: '/user/user',
+    redirect: '/user/login',
     hidden: true,
     children: [
       {
-        path: 'login',
+        path: '/user/login',
         name: 'login',
         component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login')
       },
       {
-        path: 'register',
+        path: '/user/register',
         name: 'register',
         component: () => import(/* webpackChunkName: "user" */ '@/views/user/Register')
       },
